@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script src="script.js" charset="utf-8"></script>
+    <style media="screen">
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #map {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #loadForm {
+        background: white;
+        position: absolute;
+        right: 0;
+        top:0;
+        z-index: 999999;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="loadForm">
+      <input type="file" id="loadForm--input">
+      <input type="submit" name="" value="">
+    </form>
+
+    <div id="map"></div>
+  </body>
+</html>
