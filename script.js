@@ -1,15 +1,22 @@
 document.addEventListener('DOMContentLoaded', function(){
 
   let markers = [];
+  let markerFeatureGroup;
 
-  let map = L.map('map').setView([0,0], 8);
+  let map = L.map('map').setView([0,0], 11);
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'OSM',
     maxZoom: 18
   }).addTo(map);
+  map.fitWorld();
 
   document.getElementById('loadForm').addEventListener('submit', function(e){
     e.preventDefault();
+
+    if(markerFeatureGroup != null){
+      map.removeLayer(markerFeatureGroup);
+    }
+
     let file = document.getElementById('loadForm--input').files[0];
     var reader = new FileReader();
     reader.onload = function(event) {
@@ -34,10 +41,8 @@ document.addEventListener('DOMContentLoaded', function(){
         })
       });
 
-      let markerFeatureGroup = L.featureGroup(markers).addTo(map);
+      markerFeatureGroup = L.featureGroup(markers).addTo(map);
       map.fitBounds(markerFeatureGroup.getBounds());
-
-
     };
     reader.readAsText(file);
   });
